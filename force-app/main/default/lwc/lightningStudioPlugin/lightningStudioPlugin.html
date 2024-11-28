@@ -1,0 +1,33 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Product Cart">
+
+
+        <div class="slds-var-m-around_medium">
+           
+            <lightning-input lwc:ref="product" type="text" variant="standard" name="pw" onkeyup={handleInput} label="Product" placeholder="Enter your Product"></lightning-input>
+            
+            <div class="slds-var-m-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Add product or Show/Hide product" title="Password Redemption" onclick={handleClick}></lightning-button>
+              </div>
+            <template lwc:if={isHide}>
+                Your Product is : {hidePw}
+            </template>
+             <template lwc:else>
+                Your Product is : {pw}
+            </template>
+            <ul>
+            <template for:each={a} for:item="obj">
+                <div key={obj.counter}>
+                   <strong>--Products to Buys--</strong>
+                    <p>
+                       {obj.counter} - {obj.name}
+                    </p>
+                </div>
+            </template>
+            </ul>
+           
+        </div>
+       
+    </lightning-card>
+
+</template>

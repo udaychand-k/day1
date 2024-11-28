@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <nav role="navigation" aria-label="Breadcrumbs">
+<ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+<li class="slds-breadcrumb__item">
+<a href="#">FE Documents</a>
+</li>
+<li class="slds-breadcrumb__item">
+<a href="#">All</a>
+</li>
+</ol>
+</nav>
+	
+</aura:component>

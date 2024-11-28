@@ -1,0 +1,24 @@
+<apex:component Controller="AgreementController" access="global">
+   <apex:attribute type="String" name="relData"  description="The data going in and out" assignTo="{!relatedToData}"/>
+<style type="text/css" >
+    table,th,td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        
+    }
+</style>
+
+    <table style="width:100%">
+        <th>Approver Name</th>
+        <th>Time Stamp</th>
+        <apex:repeat value="{!agreement}" var="a" >
+        <tr>
+            
+            <td style="width:33%">{!a.Name}</td>
+            <td style="width:66%">{!a.Approval_time_stamp__c}</td>
+        </tr>
+        </apex:repeat>
+        
+       
+    </table>
+</apex:component>

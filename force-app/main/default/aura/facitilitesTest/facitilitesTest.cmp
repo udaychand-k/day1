@@ -1,0 +1,134 @@
+<aura:component controller="AgreementFacilityService" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global">
+    
+    <aura:attribute name="rrecordId" type="String" default="{!v.recordId}"/>
+    
+    <aura:attribute name="disableBtn" type="boolean" default="false"/>
+    <aura:attribute name="AccountData" type="Object"/>
+    <aura:attribute name="SelectedAccount" type="Map" default="{}"/>
+    <aura:attribute name="columns" type="List"/>    
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="PaginationList" type="account"/>
+    <aura:attribute name="currentPage" type="Integer" />
+    <aura:attribute name="startPage" type="Integer" />
+    <aura:attribute name="endPage" type="Integer"/>
+    <aura:attribute name="totalRecords" type="Integer"/>
+    <aura:attribute name="pageSize" type="Integer" default="49999"/>
+    <aura:attribute name="previousScreenSelData" type="List" />
+    <aura:attribute name="filteredData" type="List" />
+    <aura:attribute name="tempFilteredId" type="List" />
+    <aura:attribute name="pageSizeOptions" type="Integer[]" default="49999, 99999" />
+    <aura:attribute name="currentPageNumber" type="Integer" default="1" />
+    <aura:attribute name="totalPages" type="Integer" default="1" />
+    <aura:attribute name="allData" type="List" />
+    <aura:attribute name="searchPhrase" type="String" />
+    <aura:attribute name="searchCity" type="String" />
+    <aura:attribute name="searchState" type="String" />
+    <aura:attribute name="searchChain" type="String" />
+    <aura:attribute name="existFacilityIds" type="String[]"/>
+    <aura:attribute name="tempSelectedIds" type="String[]"/>
+    <!-- Attribute Declration For Pagination End-->
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+     <aura:html tag="style">
+         .slds-spinner_container{
+        background: transparent !important;
+        }
+    
+        .modal-body {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+        .slds-modal__header--empty {
+            display: none !important;
+        }
+        .modal-container{
+            width: 85% !important;
+            max-width: initial !important;
+        }
+        .modal-footer {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+	<!--Model Styles copied-->
+
+	.cuf-content {
+   	 padding: 0 0rem !important;
+   	 }
+    	.slds-p-around--medium {
+   	 padding: 0rem !important;
+  	  }
+  	  .slds-modal__content {
+   	 overflow-y: hidden !important;
+   	 height: unset !important;
+    	max-height: unset !important;
+   	 }        
+	<!--Model Styles copied-->
+
+    </aura:html>
+
+
+	<!--Model Header copied-->
+
+  	<div class="slds-col modal-header slds-modal__header">
+  		  <h2 class="title slds-text-heading--medium">Facilities</h2>
+	</div>
+    	
+	<!--Model Header copied-->
+
+	<!--Model Body copied-->
+	    
+<div class="slds-col modal-body scrollable slds-p-around--medium" style="height: 200px; max-height: 400px; overflow-y: auto !important">
+    <div>
+	<!--Model Body copied-->
+
+       	<div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-12"></div>
+            <div class="slds-col slds-size_3-of-12">
+                <lightning:input onkeyup="{! c.handleSearchCity }" variant="label-hidden" placeholder="Search Accreditation" type="search" value="{! v.searchCity }" onchange="{! c.onChangeSearchPhraseCity }" />
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <lightning:input onkeyup="{! c.handleSearchState }" variant="label-hidden" placeholder="Search State" type="search" value="{! v.searchState }" onchange="{! c.onChangeSearchPhraseState }" />
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <lightning:input onkeyup="{! c.handleSearchChainCode }" variant="label-hidden" placeholder="Search Chain Code" type="search" value="{! v.searchChain }" onchange="{! c.onChangeSearchPhraseChainCode }" />
+            </div>
+           
+        </div>
+        <!--<div class="inline-container">
+            <span class="padding-right">
+                <lightning:input onkeyup="{! c.handleSearch }" variant="label-hidden" placeholder="Search Phrase" type="search" value="{! v.searchPhrase }" onchange="{! c.onChangeSearchPhrase }" />
+            </span>
+        </div>-->
+           
+        <div class="slds-p-around_small slds-grid slds-grid_align-spread slds-grid_vertical-align-start">
+            
+            <lightning:datatable aura:id="accountTable" data="{! v.PaginationList }" 
+                         columns="{! v.columns }" 
+                         keyField="Id"
+                         onrowselection="{!c.getSelectedName}"/>  
+            <br/>
+        </div>
+      	<div class="slds-p-around_small slds-grid slds-grid_align-spread slds-grid_vertical-align-start">
+         <!--<lightning:buttonGroup >
+                <lightning:button label="Previous" disabled="{!v.startPage == 0}"  
+                                  onclick="{!c.previous}" variant="brand"
+                                  iconName="utility:chevronleft"/>
+                &nbsp; &nbsp; &nbsp;
+                <lightning:button label="Next" disabled="{!v.endPage >= v.totalRecords}" 
+                                  onclick="{!c.next}" variant="brand"
+                                  iconName="utility:chevronright" iconPosition='right'/>
+            </lightning:buttonGroup> -->
+    </div>
+<!--Model Body copied-->
+  </div>
+</div>
+<!--Model Body copied-->
+
+<!--Model footer copied-->
+<div class="slds-col modal-footer slds-modal__footer">        
+    <lightning:button variant="neutral" label="Cancel" onclick="{! c.cancelClick }" />      
+    <lightning:button variant="brand" label="Save" onclick="{! c.saveMapping }" disabled="{! v.disableBtn }"/>
+    
+</div>
+<!--Model footer copied-->
+</aura:component>

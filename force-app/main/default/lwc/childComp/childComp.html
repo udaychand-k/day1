@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Child Component">
+        <div class="slds-var-m-around_medium" >
+            <strong>{message}</strong>
+            <lightning-input type="text" label="Enter some text to parent" value="hey" onkeyup={inputChangeHandler}>
+            </lightning-input>
+            <lightning-button variant="Brand" label="Send" onclick={clickHandler}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>

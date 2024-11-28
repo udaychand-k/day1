@@ -1,0 +1,85 @@
+<aura:component controller="SA" implements="force:appHostable" >
+	
+    <aura:attribute type="List" name="myList"/>
+    <br/>
+    
+    <lightning:Button label="Fetch" onclick="{!c.getStudentData}" />
+    <br/>
+    <aura:handler event="force:refreshView" action="{!c.deleteData}"/>
+    
+    <lightning:input label="Enter a Name to Search" aura:id="s" />
+    <lightning:button label="Search" onclick="{!c.searchNames}"/>
+    
+    <aura:attribute type="boolean" name="asked"/>
+    <aura:attribute type="boolean" name="editFor"/>
+    <aura:attribute type="string" name="rid"/>
+    <aura:attribute type="string" name="ridd"/>
+    <aura:if isTrue="{!v.asked}">
+    <table>
+         <thead>
+             <td></td>
+             <td></td>
+    		<th>Name</th>
+    		<th>Email</th>
+            <th>Phone Number</th>
+            <th>12th_class_percentage</th>
+            <th>Department</th>
+            <th>Father_Name</th>
+  		</thead>
+    <aura:iteration  var ="i" items="{!v.myList}">
+       
+   <tbody>
+        		<tr>
+                    <td> 
+                        <button  class="slds-m-top_small" id="btn" value="{!i.Id}"  onclick="{!c.editData}">Edit</button>
+                                    
+                    </td>
+                    
+        <td>  <button  class="slds-m-top_small" id="btn" value="{!i.Id}"  onclick="{!c.deleteData}">Delete</button></td>
+                    
+    				<td>{!i.Name}</td>
+    				<td>{!i.EMAIL_ID__c}</td>
+                    <td>{!i.Mobile_Number__c}</td>
+                    <td>{!i.X12th_class_percentage__c}</td>
+                    <td>{!i.Department__c}</td>
+                    <td>{!i.Father_Name__c}</td>
+  				</tr>
+       </tbody>
+    </aura:iteration>
+    </table> 
+        
+    </aura:if>
+    
+    
+    <aura:if isTrue="{!v.editFor}">
+        
+        <lightning:recordEditForm recordId="{!v.rid}" objectApiName="Student__c">
+                        <lightning:messages />
+                        <lightning:outputField fieldName="Name" />
+                        <lightning:inputField fieldName="Department__c" />
+                        <lightning:inputField fieldName="EMAIL_ID__c" />
+                        <lightning:inputField fieldName="Mobile_Number__c" />
+                        <lightning:button class="slds-m-top_small" onclick="{!c.notify}" variant="brand" type="submit" name="update" label="Update" />
+        </lightning:recordEditForm>
+        
+        
+        <aura:set attribute="else">
+            <lightning:recordEditForm objectApiName="Student__c">
+                <lightning:inputField fieldName="Name" />
+                <lightning:inputField fieldName="Department__c" />
+                <lightning:inputField fieldName="EMAIL_ID__c" />
+                <lightning:inputField fieldName="Interests__c" />
+                <lightning:inputField fieldName="date_of_joining__c"/>
+                <lightning:inputField fieldName="X10th_class_percentage__c" />
+                <lightning:inputField fieldName="X12th_class_percentage__c" />
+                <lightning:inputField fieldName="Mobile_Number__c" />
+                <lightning:button type="submit" name="Submit" label="submit" onclick="{!c.notify}"/>
+            </lightning:recordEditForm>
+    
+        
+        </aura:set>
+    
+    
+    </aura:if>
+    
+</aura:component>

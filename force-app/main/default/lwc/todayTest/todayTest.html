@@ -1,0 +1,28 @@
+<template>  
+    <div>
+        <c-today-testchild  surname={lastname} ontestevent = {handleChild}>
+            {age}
+        </c-today-testchild>
+        <lightning-card  variant="Narrow"  title="TOdayTest" icon-name="standard:account">
+            {age}
+            <lightning-button variant="base" label="Change Name" title="titleName" onclick={handleClick}>
+                    Hello Name Change
+            </lightning-button>
+            <template lwc:if={name}>
+                <template for:each={array} for:item="obj">
+                    <div key={obj}>
+                        {obj}
+                        
+                    </div>
+                </template>
+                ...
+                  {name}
+            </template>
+            <template lwc:else>
+                Your name goes here...
+            </template>
+          
+
+        </lightning-card>
+    </div>
+</template>

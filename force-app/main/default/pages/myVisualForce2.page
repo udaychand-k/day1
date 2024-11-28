@@ -1,0 +1,148 @@
+<apex:page controller="StudentController2" id="all" >
+       <apex:slds />
+    <head>
+        <style>
+			body{
+           background-image:url("https://developer.salesforce.com/files/salesforce-developer-network-logo.png");
+            }
+        </style>
+    </head>
+    <body >
+        
+   
+    <apex:form >
+        
+        <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
+
+        
+     
+        <apex:pageBlock title="Search">
+			            
+            <apex:inputText value="{!looker}" />
+            <apex:commandButton value="Find" action="{!getsearchStudentList}"/>
+            <apex:pageBlockSection >
+             <apex:pageBlockTable value="{!searchedStudentList}" var="i" >
+                    
+                     <apex:column >
+                       <apex:commandLink value="Edit" action="{!change}" reRender="page1" >
+                              <apex:param name="myParam" value="{!i.Id}" assignTo="{!changeId}" />
+                       </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column >
+                  	 	<apex:commandLink value="Delete" action="{!change2}" reRender="page2" >
+                         	<apex:param name="myParam" value="{!i.Id}" assignTo="{!changeId}" />
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    
+                    
+                    <apex:column headerValue="Name"  >
+                        <apex:outputText value="{!i.Name}"> 
+                        </apex:outputText>
+                    </apex:column>
+                 
+                   
+                    
+                    <apex:column headerValue="EMAIL_ID"  >
+                        <apex:outputText value="{!i.EMAIL_ID__c}"> 
+                        </apex:outputText>
+                    </apex:column>
+                     
+                                         
+                
+                    
+                    <apex:column headerValue="Mobile_Number"  >
+                        <apex:outputText value="{!i.Mobile_Number__c}"> 
+                        </apex:outputText>
+                    </apex:column>
+                    
+             
+                    
+                   
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Mandate Block" id="page1">
+            <apex:pageMessages />
+            <apex:pageBlockSection title="required fields" columns="1">
+                
+                
+                <apex:outputLabel value="Student Name" for="studName"></apex:outputLabel>
+                
+                <apex:inputText id="studName" value="{!stuObj.Name}" />
+                
+                <apex:outputLabel value="Department" for="deptName"></apex:outputLabel>
+                
+                
+                <apex:selectList id="deptName"  value="{!stuObj.Department__c}" size="1" >
+                    
+                    <apex:selectOptions value="{!DeptNames}"> </apex:selectOptions>
+                </apex:selectList>
+                           
+                
+                <apex:outputLabel value="Email id" for="email"></apex:outputLabel>
+                <apex:inputText id="email" value="{!stuObj.EMAIL_ID__c}"/>
+                
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="optional fields" columns="1">
+                <apex:outputLabel value="Xth percentage" for="percentage"></apex:outputLabel>                
+                <apex:inputText id="percentage" value="{!stuObj.X10th_class_percentage__c}"/>
+            </apex:pageBlockSection>
+            
+            <br/>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="persist" action="{!createStudent}" reRender="page1" />
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+        
+        <apex:PageBlock title="Display Block" id="page2">
+            <apex:pageBlockSection >
+                
+                <apex:pageBlockTable value="{!studentList}" var="i">
+                    
+                     <apex:column >
+                       <apex:commandLink value="Edit" action="{!change}" reRender="page1" >
+                              <apex:param name="myParam" value="{!i.Id}" assignTo="{!changeId}" />
+                       </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column >
+                  	 	<apex:commandLink value="Delete" action="{!change2}" reRender="page1,page2" >
+                         	<apex:param name="myParam" value="{!i.Id}" assignTo="{!changeId}" />
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    
+                    <apex:column headerValue="Name" >
+                        <apex:outputText value="{!i.Name}"> 
+                        </apex:outputText>
+                    </apex:column>
+                                         
+                    
+                    <apex:column headerValue="EMAIL_ID"  >
+                        <apex:outputText value="{!i.EMAIL_ID__c}"> 
+                        </apex:outputText>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Mobile_Number"  >
+                        <apex:outputText value="{!i.Mobile_Number__c}"> 
+                        </apex:outputText>
+                    </apex:column>
+                    
+                  
+                    
+                   
+                </apex:pageBlockTable>
+            
+            
+            </apex:pageBlockSection>
+         
+        </apex:PageBlock>
+    </apex:form>
+     </body>
+  
+</apex:page>

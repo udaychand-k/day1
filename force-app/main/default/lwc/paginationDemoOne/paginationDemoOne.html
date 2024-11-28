@@ -1,0 +1,56 @@
+<template>
+    <lightning-card    title="Pagination Demo">
+
+       <div class="slds-var-m-around_medium">
+           <strong class="slds-align_absolute-center slds-border_bottom">You are on Page {currentPage}</strong>
+           <template for:each={currentAccounts} for:item="record" for:index="i">
+
+            <div key={record.Name} class="slds-var-m-around_medium">
+                <div class="slds-form" role="list">
+    <div class="slds-form__row">
+        <div class="slds-form__item" role="listitem">
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                <span class="slds-form-element__label">
+                    <abbr class="slds-required" title="required">* </abbr>
+                    Account Name
+                </span>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">
+                        
+                        <a href="" target="_self">{record.Name}</a>
+                    </div>
+                    <button class="slds-button slds-button_icon" title="Edit: Assigned To">
+                        <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Edit: Assigned To</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+</div>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+           </template>
+           <div>
+               <lightning-button-group class="slds-align_absolute-center">
+                   
+               <lightning-button class="slds-float_left" label="Previous" disabled={prevDisable} onclick={previousHandler}></lightning-button>
+               <lightning-button class="slds-float_right" label="Next" disabled={nextDisable} onclick={nextHandler}></lightning-button>
+            
+                </lightning-button-group>
+           </div>
+       </div>
+    </lightning-card>
+
+</template>

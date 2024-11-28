@@ -1,0 +1,23 @@
+<aura:component controller="SA" implements="force:appHostable" >
+    
+    <aura:attribute type="String" name="sortField"/>
+    <table>
+         <thead>
+    		<th>Name</th>
+    		<th>AccountNumber</th>
+            <th>AccountRevenue</th>
+  		</thead>
+    <aura:iteration  var ="i" items="{!v.myList}">
+   <tbody>
+       <tr>
+                    
+    				<td>{!i.Name}</td>
+    				<td>{!i.AccountNumber}</td>
+                    <td>{!i.AnnualRevenue}</td>
+  				</tr>
+       </tbody>
+    </aura:iteration>
+    </table> 
+        
+	
+</aura:component>

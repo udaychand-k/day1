@@ -1,0 +1,35 @@
+<apex:page controller="StudentController">
+       <apex:slds />
+    
+  
+    <apex:form >
+        <apex:pageBlock title="Mandate Block" mode="edit">
+            
+            <apex:pageBlockSection title="required fields" columns="1">
+                <apex:outputLabel value="Student Name" for="studName"></apex:outputLabel>
+                <apex:inputText id="studNameo" value="{!studentName}" />
+                
+                <apex:outputLabel value="Department" for="deptName"></apex:outputLabel>
+                <apex:inputText id="deptName"  value="{!deptName}"/>
+                
+                <apex:outputLabel value="Email id" for="email"></apex:outputLabel>
+                <apex:inputText id="email" value="{!emailId}"/>
+                
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="optional fields" columns="1">
+                <apex:outputLabel value="Xth percentage" for="percentage"></apex:outputLabel>                
+                <apex:inputText id="percentage" value="{!tenthPercent}"/>
+            </apex:pageBlockSection>
+            
+            <br/>
+            <apex:commandButton value="persist" action="{!createStudent}" />
+            
+        </apex:pageBlock>
+        
+        <apex:PageBlock title="Optional Block">
+         
+        </apex:PageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Parent Component">
+        <div class="slds-var-m-around_medium" >
+            
+            <lightning-input type="text" label="Enter some text" value="hey" onkeyup={inputChangeHandler}>
+
+            </lightning-input>
+            <c-child-comp message={childMessage} onmessage2parent={receiveMessage}>
+            </c-child-comp>
+            {receivedMessage}
+
+        </div>
+    </lightning-card>
+    
+</template>

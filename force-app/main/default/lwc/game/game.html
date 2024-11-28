@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Game">
+        <div class="container">
+           <template for:index="i" for:item="j" for:each={numbers}>
+            <p class="item" key={j} onclick={changeDiv}>
+                {j}
+            </p>
+           </template>}
+            
+        </div>
+
+    </lightning-card>
+    
+</template>

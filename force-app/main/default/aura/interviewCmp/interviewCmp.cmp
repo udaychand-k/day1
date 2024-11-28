@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable" >
+    <lightning:button label="create" onclick="{!c.create}"/>
+    <lightning:button label="fetch" onclick="{!c.read}"/>
+    <lightning:button label="create" onclick="{!c.update}"/>
+    <lightning:button label="create" onclick="{!c.delete}"/>
+</aura:component>

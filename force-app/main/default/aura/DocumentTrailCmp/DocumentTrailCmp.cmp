@@ -1,0 +1,70 @@
+<aura:component controller="DocumentTrail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="documents" type="LIST" />
+    <aura:attribute name="recordId" type="ID" />
+  	<aura:handler  name="init" value="{!this}" action="{!c.myAction}"/>
+    <aura:attribute name="columns" type="List" />
+
+    
+    
+    <!--
+	<h1> Hello Chitra</h1>
+    <lightning:button variant="brand" label="Fetch" title="Brand action" onclick="{! c.myAction }" />
+    
+     -->
+    
+    <article class="slds-card">
+<div class="slds-card__header slds-grid">
+<header class="slds-media slds-media_center slds-has-flexi-truncate">
+<div class="slds-media__figure">
+<span class="slds-icon_container slds-icon-standard-contact" title="contact">
+<div class="slds-icon slds-icon_small" aria-hidden="true">
+<a xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#file"></a>
+</div>
+<span class="slds-assistive-text">Files</span>
+</span>
+</div>
+<div class="slds-media__body">
+<h2 class="slds-card__header-title">
+<a href="#" class="slds-card__header-link slds-truncate" title="Contacts (1)">
+<span>Files</span>
+</a>
+</h2>
+</div>
+<div class="slds-form-element">
+<div class="slds-form-element__control">
+<div class="slds-file-selector slds-file-selector_images">
+<div class="slds-file-selector__dropzone">
+<input type="file" class="slds-file-selector__input slds-assistive-text" accept="image/png" id="file-upload-input-311" aria-labelledby="file-selector-primary-label-309 file-selector-secondary-label310" />
+<label class="slds-file-selector__body" for="file-upload-input-311" id="file-selector-secondary-label310">
+<span class="slds-file-selector__button slds-button slds-button_neutral">
+<div class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+<a xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"></a>
+</div>Upload Files</span>
+
+</label>
+</div>
+</div>
+</div>
+</div>
+</header>
+</div>
+<div class="slds-card__body">
+<lightning:datatable
+                keyField="id"
+                data="{! v.documents }"
+                columns="{! v.columns }"
+                />
+</div>
+<footer class="slds-card__footer">
+    
+<a class="slds-card__footer-action" href="#">View All
+<span class="slds-assistive-text">Files</span>
+</a>
+</footer>
+</article>
+    
+    
+    
+    
+</aura:component>

@@ -1,0 +1,5 @@
+<apex:page >
+    <apex:slds />
+
+    <c:Dual ></c:Dual>
+</apex:page>

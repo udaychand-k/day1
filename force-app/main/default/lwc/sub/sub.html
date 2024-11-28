@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Subscriber">
+        <div class="slds-var-m-around_medium">
+            <p><strong class="slds-var-m-around_medium">{receivedMessage}</strong></p>
+            
+            <lightning-button-group class="slds-var-m-around_medium">
+                <lightning-button label="Subscribe" onclick={subscribeHandler}>
+
+                </lightning-button>
+                <lightning-button label="unsubscribe" onclick={unsubscribeHandler}>
+
+                </lightning-button>
+            </lightning-button-group>
+        </div>
+    </lightning-card>
+</template>

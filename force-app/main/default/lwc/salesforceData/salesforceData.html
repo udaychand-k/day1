@@ -1,0 +1,46 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-m-around_medium">
+            <lightning-record-form object-api-name="Account" mode="view" fields={fields} columns="3">
+
+            </lightning-record-form>
+        </div>
+
+        <div class="slds-var-m-around_medium">
+            <lightning-record-form layout-type="full" object-api-name="Account" mode="view" fields={fields} columns="3">
+
+            </lightning-record-form>
+        </div>
+        <div class="slds-var-m-around_medium">
+            <lightning-record-form layout-type="compact" object-api-name="Account" mode="view" fields={fields} columns="3">
+
+            </lightning-record-form>
+        </div>
+
+        <div class="slds-var-m-around_medium">
+            <lightning-record-view-form  record-id="0015h00001XYrgVAAT"  object-api-name="Account"  >
+                <lightning-output-field field-name="Name">
+
+                </lightning-output-field>
+
+            </lightning-record-view-form>
+        </div>
+     
+
+        <div class="slds-var-m-around_medium">
+            <lightning-record-edit-form record-id="0015h00001XYrgVAAT" layout-type="full" object-api-name="Account" mode="view" fields={fields} columns="3">
+                <lightning-input-field field-name="Name">
+
+                </lightning-input-field>
+            </lightning-record-edit-form>
+        </div>
+        <div class="slds-var-m-around_medium">
+            <lightning-record-edit-form record-id="0015h00001XYrgVAAT" layout-type="compact" object-api-name="Account" mode="view" fields={fields} columns="3">
+
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+   
+
+    
+</template>

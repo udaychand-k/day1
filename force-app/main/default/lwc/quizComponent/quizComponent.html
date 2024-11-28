@@ -1,0 +1,95 @@
+<template>
+    <strong>Hey Ram</strong>
+
+
+    <lightning-card  title="English Quiz">
+        <div class="slds-var-m-around_medium">
+            <template if:false={started}>
+                <lightning-button 
+
+                variant="brand" 
+                label="Start" 
+                title="Primary action" 
+                onclick={handleStart} 
+                class="slds-var-m-around_medium"
+                >
+    
+    
+                </lightning-button>
+
+            </template>
+            <template lwc:if={started}>
+                
+                <template for:each={data_store} for:item="item">
+                    <form key={item.qno}>
+                    <div>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                                <strong> {item.qno}. {item.question}</strong>
+                            </div>
+                           
+                        </div>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_6-of-12">
+                                <input type="radio" id={item.options.A} name={item.qno} value="A" onchange={changeHandler}>
+                                <label for={item.options.A}>{item.options.A}</label>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <input type="radio" id={item.options.B} name={item.qno} value="B" onchange={changeHandler}>
+                                <label for={item.options.B}>{item.options.B}</label>
+                            </div>
+
+                        </div>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_6-of-12">
+                                <input type="radio" id={item.options.C} name={item.qno} value="C" onchange={changeHandler}>
+                                <label for={item.options.C}>{item.options.C}</label>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <input type="radio" id={item.options.D} name={item.qno} value="D" onchange={changeHandler}>
+                                <label for={item.options.D}>{item.options.D}</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </template>
+                <lightning-button 
+
+                variant="brand" 
+                label="Submit" 
+                title="Primary action" 
+                onclick={handleSubmit} 
+                class="slds-var-m-around_medium"
+                >
+    
+    
+                </lightning-button>
+            </template>
+            <template if:true={submitted}>
+
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                  
+                    <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Score Card</h1>
+                    </div>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <span class="slds-text-color_success">  You have completed your exam Successfully</span>
+                      </br><strong> Your Score : {score} </strong>
+                    </div>
+
+                    <div class="slds-modal__footer">
+                    
+                    <button class="slds-button slds-button_brand" onclick={handleOkay}>Exit</button>
+                    </div>
+                    </div>
+                    </section>
+                    
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
